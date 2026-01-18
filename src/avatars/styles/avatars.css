@@ -1,1 +1,59 @@
-/* 여기에 스타일을 구현해 주세요 */
+/* 1 1단 중앙 정렬해 */
+.center {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.container {
+  display: inline-block;
+  padding: 10px;
+  width: 500px;
+}
+/* https://developer.mozilla.org/ko/docs/Web/CSS/Reference/Properties/clear 참조 */
+.container::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.avatar {
+  /* 왼쪽부터 정렬 */
+  float: left;
+  /* 왼쪽빼고 전부 20px 띄기 */
+  margin: 0 20px 20px 20px;
+}
+/* 아바타 묶어~ */
+.avatarWrapper {
+  position: relative;
+}
+
+.avatarImg {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+/* 이건 상태관리인데 js 안 들어가야할거 같아서 대충 off와 on css 짜두고
+임의로 상태값지정해서 스타일 넣기
+일단 span tag 전체에 들어가는 스타일
+*/
+span {
+  position: absolute;
+  /* 아래와 오른쪽을 0을줘서 붙이기 */
+  right: 0;
+  bottom: 0;
+  /* 가로 세로 16px */
+  width: 16px;
+  height: 16px;
+  /* 둥굴게 */
+  border-radius: 50%;
+}
+/* 이건 on일때 쓰는 초록색 */
+.online {
+  background-color: #4cfe88;
+}
+/* off일때 회색 */
+.offline {
+  background-color: #dbdbdb;
+}
