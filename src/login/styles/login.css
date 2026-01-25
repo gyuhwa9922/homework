@@ -1,1 +1,193 @@
-/* CSS를 활용하여 레이아웃 및 스타일링을 완성해주세요 */
+/* 모든 요소에 대한 기본 초기화 설정 */
+:root {
+  --green: #03cf5d;
+  --focus: #24388d;
+  --basic: #fff;
+  --border-gray: #dadada;
+  --focus-state: #e9f0fd;
+  --black: #121212;
+}
+* {
+  box-sizing: border-box; /* 패딩과 테두리를 너비에 포함시켜 계산함 */
+  margin: 0; /* 기본 바깥 여백 제거 */
+  padding: 0; /* 기본 안쪽 여백 제거 */
+}
+
+/* 시각장애인용 스크린 리더 기기만 인식할 수 있도록 요소를 화면에서 숨김 */
+.sr-only {
+  position: absolute; /* 레이아웃에 영향을 주지 않도록 절대 위치 설정 */
+  width: 1px; /* 가로 1px로 최소화 */
+  height: 1px; /* 세로 1px로 최소화 */
+  padding: 0; /* 안쪽 여백 제거 */
+  margin: -1px; /* 위치 보정 */
+  overflow: hidden; /* 넘치는 부분 숨김 */
+  clip: rect(0, 0, 0, 0); /* 요소를 사각형 모양으로 완전히 잘라냄 */
+  border: 0; /* 테두리 제거 */
+}
+
+/* 1. 로고 스타일링 */
+.logo {
+  text-align: center; /* 로고 이미지를 중앙 정렬 */
+  margin: 3.75rem 0 1.875rem; /* 위 60px, 아래 30px 여백을 rem 단위로 적용 */
+  size: 230px;
+}
+.logo svg {
+  width: 230px;
+  height: auto; /* 가로 비율에 맞춰 세로 높이를 자동으로 설정 */
+  display: inline-block; /* 중앙 정렬을 유지하기 위해 인라인 블록으로 설정 */
+}
+/* 2. 로그인 입력 폼 컨테이너 */
+.login-wrapper {
+  width: 100%; /* 모바일에서 너비 100% 사용 */
+  padding: 0 1.25rem; /* 양옆 20px 여백을 rem 단위로 적용 */
+  margin: 0 auto; /* 가로 중앙 정렬 */
+}
+
+/* 입력창 두 개를 감싸는 그룹 */
+.input-group {
+  display: flex; /* 내부 요소를 유연하게 배치 */
+  flex-direction: column; /* 입력창들을 세로 방향으로 나열 */
+  gap: 0.5rem; /* 입력창 사이의 8px 간격을 rem 단위로 설정 */
+}
+
+/* 실제 아이디, 비밀번호 입력 태그 */
+.input-group input {
+  width: 100%; /* 부모 너비에 가득 차게 설정 */
+  height: 48px; /* 입력창 높이 고정 */
+  padding: 0.75rem; /* 12px 안쪽 여백을 rem 단위로 적용 */
+  border: 1px solid var(--border-gray); /* 테두리 색상 설정 */
+  background: var(--basic); /* 배경색 흰색 설정 */
+}
+
+/* 로그인 버튼 스타일링 */
+.login-btn {
+  width: 100%; /* 버튼 너비 가득 차게 설정 */
+  height: 48px; /* 버튼 높이 설정 */
+  background: var(--green); /* 네이버 브랜드 색상(초록색) 적용 */
+  color: var(--basic); /* 글자색 흰색 설정 */
+  border: none; /* 기본 버튼 테두리 제거 */
+  font-size: 1.125rem; /* 18px 글자 크기를 rem 단위로 적용 */
+  font-weight: 700; /* 글자 두께 굵게 설정 */
+  margin-top: 0.625rem; /* 버튼 위쪽 10px 여백을 rem 단위로 적용 */
+  cursor: pointer; /* 마우스 호버 시 손가락 모양으로 변경 */
+}
+
+/* 3. 로그인 상태 유지 및 IP 보안 옵션 영역 */
+.login-options {
+  display: flex; /* 가로로 배치 */
+  justify-content: space-between; /* 양쪽 끝으로 벌려서 배치 */
+  align-items: center; /* 세로 방향 중앙 정렬 */
+  margin-top: 0.635rem; /* 영역 위쪽 10px 여백을 rem 단위로 적용 */
+}
+
+/* 체크박스와 텍스트를 감싸는 라벨 */
+.keep-check label {
+  display: flex; /* 아이콘과 텍스트 가로 배치 */
+  align-items: center; /* 세로 중앙 정렬 */
+  cursor: pointer; /* 클릭 가능하다는 표시 */
+  color: var(--black);
+  font-size: 0.875rem; /* 14px 글자 크기를 rem 단위로 적용 */
+}
+
+/* 체크박스 아이콘 SVG 박스 */
+.checkbox-icons {
+  margin-right: 0.3125rem; /* 아이콘과 글자 사이 5px 간격을 rem 단위로 설정 */
+  width: 24px; /* 가로 크기 */
+  height: 24px; /* 세로 크기 */
+  display: inline-block; /* 영역을 가질 수 있게 인라인 블록으로 설정 */
+}
+
+/* 체크 전 아이콘 상태 */
+.keep-check .checked {
+  display: none; /* 기본적으로 체크된 모양 아이콘은 숨김 */
+}
+
+/* 체크박스 활성화 시 상태 변화 */
+#keep-login:checked + label .unchecked {
+  display: none; /* 체크되면 미체크 아이콘 숨김 */
+}
+#keep-login:checked + label .checked {
+  display: block; /* 체크되면 체크된 아이콘 노출 */
+}
+
+/* IP 보안 영역 스타일 */
+.ip-security {
+  display: flex; /* 텍스트와 스위치 가로 배치 */
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 0.5rem; /* 요소 사이 8px 간격을 rem 단위로 설정 */
+}
+
+/* IP 보안 글자 스타일 */
+.ip-text label {
+  font-size: 1rem; /* 16px 글자 크기를 rem 단위로 적용 */
+  color: var(--black); /* 검정색 글자 설정 */
+  cursor: pointer; /* 클릭 유도 */
+  user-select: none; /* 텍스트 드래그 방지 */
+}
+
+/* 스위치 몸체 (OFF 상태) */
+.switch-box {
+  position: relative; /* 내부 글자 배치를 위한 기준점 설정 */
+  display: flex; /* 내부 ON/OFF 글자 배치용 */
+  align-items: center; /* 중앙 정렬 */
+  justify-content: center; /* 중앙 정렬 */
+  width: 45px; /* 가로 길이 고정 */
+  height: 22px; /* 세로 높이 고정 */
+  background-color: var(--basic); /* 배경 흰색 설정 */
+  border: 1px solid var(--border-gray); /* 테두리 회색 설정 */
+  border-radius: 2px; /* 테두리 살짝 둥글게 설정 */
+  cursor: pointer; /* 클릭 유도 */
+  transition: all 0.2s ease-in-out; /* 상태 변화 시 부드러운 애니메이션 효과 */
+  color: var(--black);
+}
+
+/* ON/OFF 글자 공통 스타일 */
+.switch-box span {
+  position: absolute; /* 부모 박스 중앙에 겹쳐서 배치 */
+  font-size: 1rem; /* 16px 글자 크기를 rem 단위로 적용 */
+  font-weight: 800; /* 글자 아주 굵게 설정 */
+}
+
+/* ON 글자 초기 상태 */
+.text-on {
+  opacity: 0; /* 보이지 않게 투명하게 설정 */
+  color: var(--basic); /* 배경 초록색일 때 대비되도록 흰색 설정 */
+}
+
+/* OFF 글자 초기 상태 */
+.text-off {
+  opacity: 1; /* 보이게 설정 */
+  color: var(--border-gray); /* 연회색 글자 설정 */
+}
+
+/* IP 보안 스위치 체크(ON) 시 스타일 변화 */
+#ip-toggle:checked + .switch-box {
+  background-color: var(--green); /* 배경색 초록색으로 변경 */
+  border-color: var(--green); /* 테두리도 초록색으로 변경 */
+}
+
+/* ON 글자 노출 */
+#ip-toggle:checked + .switch-box .text-on {
+  opacity: 1; /* 보이게 변경 */
+}
+
+/* OFF 글자 숨김 */
+#ip-toggle:checked + .switch-box .text-off {
+  opacity: 0; /* 투명하게 변경 */
+}
+
+/* 키보드 사용자가 Tab 키로 이동했을 때 시각적 표시 */
+#ip-toggle:focus-visible + .switch-box {
+  outline: 2px solid var(--focus); /* 강조용 파란색 테두리 표시 */
+  outline-offset: 1px; /* 테두리를 박스에서 1px 띄움 */
+}
+
+/* 데스크탑 환경을 위한 설정 (768px 이상) */
+@media (min-width: 768px) {
+  .login-wrapper {
+    width: 500px; /* 전체 너비를 500px로 고정 */
+  }
+  .desktop-only {
+    display: flex; /* 숨겨져 있던 요소를 다시 보여줌 */
+  }
+}
