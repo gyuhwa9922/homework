@@ -1,3 +1,125 @@
-@import "./reset.css";
-@import "./theme.css";
-@import "./base.css";
+@import './reset.css';
+@import './theme.css';
+@import './base.css';
+
+.ipad-pro {
+  background-image: image-set(url('../products/ipad_pro.jpeg') 1x, url('../products/ipad_pro_2x.jpeg') 2x);
+
+  @media (width >= 1024px) {
+    background-image: image-set(url('../products/ipad_pro_wide.jpeg') 1x, url('../products/ipad_pro_wide_2x.jpeg') 2x);
+  }
+}
+
+.ipad-air {
+  background-image: image-set(url('../products/ipad_air.jpeg') 1x, url('../products/ipad_air_2x.jpeg') 2x);
+
+  @media (width >= 1024px) {
+    background-image: image-set(url('../products/ipad_air_wide.jpeg') 1x, url('../products/ipad_air_wide_2x.jpeg') 2x);
+  }
+}
+
+.iphone15-pro {
+  background-image: image-set(url('../products/iphone15_pro.jpeg') 1x, url('../products/iphone15_pro_2x.jpeg') 2x);
+
+  @media (width >= 1024px) {
+    background-image: image-set(url('../products/iphone15_pro_wide.jpeg') 1x, url('../products/iphone15_pro_wide_2x.jpeg') 2x);
+  }
+}
+
+.iphone15 {
+  background-image: image-set(url('../products/iphone15.jpeg') 1x, url('../products/iphone15_2x.jpeg') 2x);
+}
+
+.apple-watch {
+  background-image: image-set(url('../products/apple_watch.jpeg') 1x, url('../products/apple_watch_2x.jpeg') 2x);
+}
+
+.macbook-air {
+  background-image: image-set(url('../products/macbook_air.jpeg') 1x, url('../products/macbook_air_2x.jpeg') 2x);
+}
+
+.airpods-pro {
+  background-image: image-set(url('../products/airpods_pro.jpeg') 1x, url('../products/airpods_pro_2x.jpeg') 2x);
+}
+
+.description {
+  font-size: var(--small-text);
+  color: var(--gray);
+}
+
+.product-card {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  inline-size: 100%;
+  block-size: var(--size);
+  padding-block-start: var(--large-spacing);
+  row-gap: var(--small-spacing);
+
+  &.white {
+    --text-color: var(--white);
+    --button-color: var(--blue-200);
+    --button-text: var(--white);
+  }
+  &.black {
+    --text-color: var(--black);
+    --button-color: var(--black);
+    --button-text: var(--white);
+  }
+  color: var(--text-color);
+  .button {
+    border: 1px solid var(--button-color);
+    &.more {
+      background: var(--button-color);
+      color: var(--button-text);
+    }
+    &.view {
+      color: var(--button-color);
+    }
+  }
+  @media (width >= 1024px) {
+    padding-block-start: var(--extra-large-spacing);
+  }
+
+  .product-title {
+    font-size: var(--large-text);
+
+    @media (width >= 1024px) {
+      font-size: var(--extra-large-text);
+    }
+  }
+
+  .product-subtitle {
+    margin-block-end: var(--x-small-spacing);
+    font-size: var(--base-spacing);
+    text-align: center;
+
+    @media (width >= 1024px) {
+      font-size: var(--medium-text);
+    }
+  }
+
+  .btn-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: var(--base-spacing);
+  }
+
+  .button {
+    display: inline-block;
+    flex-shrink: 0;
+    min-inline-size: 6.25rem;
+    font-size: var(--xx-small-text);
+    padding: var(--x-small-spacing) var(--small-spacing);
+    border: 1px solid var(--button-color);
+    border-radius: 30px;
+    text-align: center;
+
+    @media (width >= 1024px) {
+      font-size: var(--x-small-text);
+    }
+  }
+}

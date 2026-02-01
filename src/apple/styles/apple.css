@@ -1,3 +1,22 @@
-@import "./card-component.css";
+@import './card-component.css';
 
 /* 카드 레이아웃 */
+.product_cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+
+  .product-card {
+    grid-column: span 2;
+
+    @media (width >= 1024px) {
+      &:nth-child(-n + 3) {
+        grid-column: span 2;
+      }
+      /* 4번째 카드부터는 한 칸씩 차지해서 2열로 배치 */
+      &:nth-child(n + 4) {
+        grid-column: span 1;
+      }
+    }
+  }
+}
